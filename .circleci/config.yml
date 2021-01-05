@@ -1,0 +1,53 @@
+version: 2.1
+
+executors:
+  node:
+    docker:
+      - image: "circleci/node:14.15-stretch"
+  cypress:
+    docker:
+      - image: "cypress/included:6.2.1"
+
+commands:
+  install_dependencies:
+    steps:
+      - restore_cache:
+          keys:
+            - dependencies-{{ checksum "yarn.lock" }}
+            - dependencies-
+      - run: yarn install --prefer-offline --cache-folder ~/.cache/yarn
+      - save_cache:
+          key: dependencies-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+
+jobs:
+  build:
+    executor: node
+    steps:
+      - checkout
+      - install_dependencies
+      - run: yarn nx affected:build --base=origin/master
+
+  test:
+    executor: node
+    steps:
+      - checkout
+      - install_dependencies
+      - run: yarn nx affected:test --base=origin/master
+
+  e2e:
+    executor: cypress
+    environment:
+      CYPRESS_VIDEO: "false"
+    steps:
+      - checkout
+      - install_dependencies
+      - run: yarn nx affected:e2e --base=origin/master --headless
+
+workflows:
+  build_and_test:
+    jobs:
+      - build
+      - test
+      - e2e

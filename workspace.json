@@ -17,6 +17,7 @@
             "main": "apps/app/src/main.tsx",
             "polyfills": "apps/app/src/polyfills.ts",
             "tsConfig": "apps/app/tsconfig.app.json",
+            "maxWorkers": 1,
             "assets": [
               "apps/app/src/favicon.ico",
               "apps/app/src/assets"
@@ -93,7 +94,8 @@
           "options": {
             "cypressConfig": "apps/app-e2e/cypress.json",
             "tsConfig": "apps/app-e2e/tsconfig.e2e.json",
-            "devServerTarget": "app:serve"
+            "devServerTarget": "app:serve",
+            "maxWorkers": 1
           },
           "configurations": {
             "production": {
