@@ -1,4 +1,5 @@
 import React from 'react';
+import { Title } from '@vsorg/components';
 
 import styles from './app.module.css';
 
@@ -10,7 +11,7 @@ export function App() {
     <div className={styles.app}>
       <header className="flex">
         <Logo width="75" height="75" />
-        <h1>Welcome to app!</h1>
+        <Title text="Welcome to app!!" />
       </header>
       <main>
         <h2>Resources &amp; Tools</h2>

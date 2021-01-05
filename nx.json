@@ -24,11 +24,15 @@
   },
   "projects": {
     "app": {
-      "tags": []
+      "tags": [],
+      "implicitDependencies": []
     },
     "app-e2e": {
       "tags": [],
-      "implicitDependencies": ["app"]
+      "implicitDependencies": []
+    },
+    "components": {
+      "tags": []
     }
   }
 }
