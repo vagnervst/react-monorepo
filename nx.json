@@ -33,6 +33,12 @@
     },
     "components": {
       "tags": []
+    },
+    "another-app": {
+      "tags": []
+    },
+    "another-app-e2e": {
+      "tags": []
     }
   }
 }
