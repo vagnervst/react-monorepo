@@ -8,7 +8,9 @@ export interface TitleProps {
 
 export function Title(props: TitleProps) {
   return (
-    <h1>{props.text}</h1>
+    <div>
+      <h1>{props.text}</h1>
+    </div>
   );
 }
 
